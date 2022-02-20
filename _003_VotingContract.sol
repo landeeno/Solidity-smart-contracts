@@ -29,16 +29,29 @@ Landon Crowther
 02/20/2022
 
 */
+
+
 contract VotingContract {
 
-    address[] private voterAddressArray;
-    mapping (address => Voter) public voterMapping;
-    Proposal[] public proposalArray;
-
+    address[] private voterAddressArray; //array where all voter address information will be stored. 
+    mapping (address => Voter) public voterMapping; //mapping to link voter addresses with Voter struct. 
+    Proposal[] public proposalArray; //array of proposals.
+    
+    /*
+    Voter struct. Contains:
+        numberOfVotes: how many voter user currently has. 
+    */
     struct Voter {
         uint numberOfVotes;
     }
 
+    /*
+    Proposal struct. Contains:
+        information about chairman - who created the proposal
+        a name
+        accumulated quantity of yes-votes and no-votes
+        a deadline for when proposal will conclude. 
+    */
     struct Proposal {
         string proposalName;
         address chairman; //account which starts proposal;
